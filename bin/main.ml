@@ -13,5 +13,5 @@ let () =
         let result = match !day_number with
                   01 -> Lib.Day01.run "input/day01.txt"
                 | _ -> raise (Invalid_argument "day not yet implemented") in
-        Printf.printf "Result for day %d: %d\n" !day_number result
+        Printf.printf "Result for day %d: part 1 %d, part 2 %d\n" !day_number (fst result) (snd result)
 

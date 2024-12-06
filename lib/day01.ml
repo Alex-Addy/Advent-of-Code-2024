@@ -38,11 +38,6 @@ let solver parsed_lines =
     let zipped = List.combine left right in
     List.fold_left process_pair 0 zipped
 
-let run filename = 
-    let lines = read_lines filename in
-    let parsed = parse_lines lines in
-    solver parsed
-
 let run_on_string str =
     let lines = String.split_on_char '\n' str in
     let parsed = parse_lines lines in
@@ -59,3 +54,47 @@ let sample_test_input = "3   4
 let%test "sample_input_solver" =
     run_on_string sample_test_input = 11
 
+(* part two *)
+
+(*
+let%test_unit "count_occurrences" =
+    let expected = Hashtbl.create 3;
+    expected.add 1 1;
+    expected.add 2 3;
+    expected.add 4 2;
+    let received = count_occurrences [1; 2; 4; 2; 4; 2] in
+    assert_hashtbl_equals expected received;
+*)
+
+let count_occurrences (vals: int list) =
+    let tbl = Hashtbl.create (List.length vals) in
+    let count n = match Hashtbl.find_opt tbl n with
+        | None -> Hashtbl.add tbl n 1
+        | Some x -> Hashtbl.replace tbl n (x+1) in
+    List.iter count vals;
+    tbl
+
+let find_or_default default tbl key =
+    match Hashtbl.find_opt tbl key with
+        | None -> default
+        | Some v -> v
+
+let part_two_solver: int list list -> int = fun parsed_lines ->
+    let (left, right) = sort_and_split_lists parsed_lines in
+    let occurrences = count_occurrences right in
+    let get_true_val acc location =
+        let counted = find_or_default 0 occurrences location in
+        acc + (counted * location) in
+    List.fold_left get_true_val 0 left
+
+let assert_hashtbl_equals: ('a, 'b) Hashtbl.t -> ('a, 'b) Hashtbl.t -> unit = fun l r ->
+    let assert_in_r: 'a -> 'b -> unit = fun key value ->
+        match Hashtbl.find_opt r key with
+            | None -> assert false
+            | Some x -> assert (x = value) in
+    Hashtbl.iter assert_in_r l
+
+let run filename = 
+    let lines = read_lines filename in
+    let parsed = parse_lines lines in
+    (solver parsed, part_two_solver parsed)
