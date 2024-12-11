@@ -33,3 +33,39 @@ FindChangesWithinRange :
 
 °□/+ ×
 $"Solution to part 1: _"
+
+# Part 2
+
+Check ← (
+  ⧈-
+  ⊃( # Determine if monotonic
+    ⊃(=¯1|=1)±
+    +∩/*
+  | # Determine if in range
+    ≡≡⌵
+    ⊃(≥1|≤3)
+    /**≡/*
+  )
+  *
+)
+
+⍤⤙≍ 1 Check [1 2 3 4 5 6]
+⍤⤙≍ 0 Check [2 1 3]
+⍤⤙≍ 0 Check [1 2 7]
+⍤⤙≍ 1 Check [¯1 ¯2 ¯4]
+⍤⤙≍ 0 Check [2 2 3]
+
+# Check if array would be valid if any one item was removed
+CheckRem ← (
+  ⧅<¯1
+  ≡Check
+  /↥
+)
+⍤⤙≍ 0 CheckRem [1 3 2 12 4 5]
+⍤⤙≍ 1 CheckRem [1 3 2 4 5]
+⍤⤙≍ 0 Check [1 3 2 4 5]
+
+°□/+ ⍚CheckRem ParseString &fras "test.txt"
+$"Solution to part 2 test: _"
+°□/+ ⍚CheckRem ParseString &fras "input.txt"
+$"Solution to part 2: _"
