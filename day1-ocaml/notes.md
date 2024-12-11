@@ -1,0 +1,3 @@
+This is the start of an attempt to solve AoC while learning Ocaml. However I ended up giving up after day 1 due to the Ocaml compiler's inability to give me helpful error messages when I mess up with the syntax. It is incapable of even pointing me to where the syntax error occurred. To see an example of this, uncomment out the test I have written and see that it gives an error in a completely unrelated part of the file. Part of the issue seems to stem from the way the ocaml syntax works, making it difficult to tell where a declartion begins and ends. But it would be nice if the compiler would at least give me more that "Syntax Error" when there is a problem.
+
+Code was written and run against Ocaml 5.2.0.
