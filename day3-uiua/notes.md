@@ -1,0 +1,1 @@
+[pad](https://www.uiua.org/pad?src=0_14_0-dev_7__InhtdWwoMiw0KSUmbXVsWzMsN10hQF5kb19ub3RfbXVsKDUsNSkrbXVsKDMyLDY0XXRoZW4obXVsKDExLDgpbXVsKDgsNSkpIgokIG11bFwoKFxkezEsM30pLChcZHsxLDN9KVwpCnJlZ2V4CuKNmuKGmDEK4oi1wrDilqEK4ouVCuKJoS_DlwovKwo=) solution to part 1
